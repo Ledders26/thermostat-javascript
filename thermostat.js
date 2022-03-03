@@ -3,6 +3,7 @@ class Thermostat {
   constructor() {
     this.temperature = 20
     this.minimumTemperature = 10
+    this.powerSavingMode = true
   };
 
   getTemperature() {

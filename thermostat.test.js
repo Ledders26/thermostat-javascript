@@ -27,12 +27,20 @@ describe (Thermostat, () => {
   });
 
   describe ('down', () => {
-
     let thermostat = new Thermostat
+    
     it ('decreases the temperature by 1', () => {
       thermostat.down()
       thermostat.down()
       expect(thermostat.getTemperature()).toBe (18);
+    });
+  });
+
+  describe ('powerSavingMode', () => {
+    let thermostat = new Thermostat
+
+    it ('is on by default', () => {
+      expect(thermostat.powerSavingMode).toBe (true)
     });
   });
 });
