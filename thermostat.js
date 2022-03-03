@@ -18,7 +18,13 @@ class Thermostat {
     if (this.temperature > this.minimumTemperature) {
     this.temperature -= 1
     };
-};
+  };
+
+  setPowerSavingMode(change) {
+    if (change == true || change == false) {
+    this.powerSavingMode = change
+    };
+  };
 
 };
 

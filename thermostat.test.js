@@ -40,7 +40,12 @@ describe (Thermostat, () => {
     let thermostat = new Thermostat
 
     it ('is on by default', () => {
-      expect(thermostat.powerSavingMode).toBe (true)
+      expect(thermostat.powerSavingMode).toBe (true);
     });
+    it ('can be turned off', () => {
+      thermostat.setPowerSavingMode(false)
+      expect(thermostat.powerSavingMode).toBe (false);
+    });
+
   });
 });
