@@ -73,4 +73,35 @@ describe (Thermostat, () => {
       expect(thermostat.getTemperature()).toBe (20);
     });
   });
+
+  describe ('energyUsage', () => {
+    let thermostat = new Thermostat
+    it ('should return low-usage when temperature below 18', () => {
+      thermostat.down();
+      thermostat.down();
+      thermostat.down();
+      thermostat.down();
+      expect(thermostat.getTemperature()).toBe (16);
+      expect(thermostat.energyUsage()).toBe ('low-usage')
+    });
+
+    it ('should return medium-usage when temperature below 26 but above 18', () => {
+      thermostat.reset();
+      expect(thermostat.getTemperature()).toBe (20);
+      expect(thermostat.energyUsage()).toBe ('medium-usage')
+    });
+
+    it ('should return high-usage when temperature above 25', () => {
+      thermostat.reset();
+      thermostat.setPowerSavingMode(false)
+      thermostat.up();
+      thermostat.up();
+      thermostat.up();
+      thermostat.up();
+      thermostat.up();
+      thermostat.up();
+      expect(thermostat.getTemperature()).toBe (26);
+      expect(thermostat.energyUsage()).toBe ('high-usage')
+    });
+  });
 });
