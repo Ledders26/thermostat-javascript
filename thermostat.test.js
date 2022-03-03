@@ -46,6 +46,31 @@ describe (Thermostat, () => {
       thermostat.setPowerSavingMode(false)
       expect(thermostat.powerSavingMode).toBe (false);
     });
+    it ('has a maximum temperature of 25 when on', () => {
+      thermostat.setPowerSavingMode(true)
+      for (let i = 0 ; i < 15 ; i++) {
+        thermostat.up();
+      };
+      expect(thermostat.getTemperature()).toBe (25);
+    });
+    it ('has a maximum temperature of 32 when off', () => {
+      thermostat.setPowerSavingMode(false)
+      for (let i = 0 ; i < 15 ; i++) {
+        thermostat.up();
+      };
+      expect(thermostat.getTemperature()).toBe (32);
+    });
+  });
 
+  describe ('reset', () => {
+    let thermostat = new Thermostat
+    it ('resets the current temperature to 20', () => {
+      thermostat.up();
+      thermostat.up();
+      thermostat.up();
+      thermostat.up();
+      thermostat.reset();
+      expect(thermostat.getTemperature()).toBe (20);
+    });
   });
 });

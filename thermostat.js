@@ -4,6 +4,7 @@ class Thermostat {
     this.temperature = 20
     this.minimumTemperature = 10
     this.powerSavingMode = true
+    this.maximumTemperature = 25
   };
 
   getTemperature() {
@@ -11,7 +12,9 @@ class Thermostat {
   };
 
   up() {
+    if(this.temperature < this.maximumTemperature) {
     this.temperature += 1
+    };
   };
 
   down() {
@@ -21,11 +24,24 @@ class Thermostat {
   };
 
   setPowerSavingMode(change) {
-    if (change == true || change == false) {
+    if (change === true || change === false) {
     this.powerSavingMode = change
+    };
+    this.setMaximumTemperature()
+  };
+
+  setMaximumTemperature() {
+    if(this.powerSavingMode === true) {
+      this.maximumTemperature = 25
+    }
+    else {
+      this.maximumTemperature = 32
     };
   };
 
+  reset() {
+    this.temperature = 20
+  }
 };
 
 module.exports = Thermostat
