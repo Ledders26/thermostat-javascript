@@ -17,4 +17,13 @@ describe (Thermostat, () => {
       expect(thermostat.getTemperature()).toBe (22);
     });
   });
+
+  describe ('down', () => {
+    let thermostat = new Thermostat
+    it ('decreases the temperature by 1', () => {
+      thermostat.down()
+      thermostat.down()
+      expect(thermostat.getTemperature()).toBe (18);
+    });
+  });
 });
